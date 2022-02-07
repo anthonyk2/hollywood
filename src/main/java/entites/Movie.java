@@ -39,7 +39,7 @@ public class Movie {
         this.year = year;
     }
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.PERSIST)
     private List<Actor> actor = new ArrayList<>();
 
     public List<Actor> getActor() {
@@ -49,19 +49,6 @@ public class Movie {
     public void setActor(List<Actor> actor) {
         this.actor = actor;
     }
-
-    // add and remove methods: useful for connecting these two entities
-
-    public void addActor(Actor actor) {
-        getActor().add(actor);
-        actor.getMovie().add(this);
-    }
-
-    public void removeActor(Actor actor) {
-        getActor().remove(actor);
-        actor.getMovie().remove(this);
-    }
-
 
 
     public Movie() {

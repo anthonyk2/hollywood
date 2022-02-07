@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "actor")
 public class Actor {
 
     @Id
@@ -50,7 +49,7 @@ public class Actor {
         this.lastName = lastName;
     }
 
-    @ManyToMany(mappedBy = "actor")
+    @ManyToMany(mappedBy = "actor", cascade = CascadeType.PERSIST)
     private List<Movie> movie = new ArrayList<>();
 
     public List<Movie> getMovie() {
